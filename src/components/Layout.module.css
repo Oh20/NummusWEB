@@ -1,0 +1,18 @@
+.shell { display: flex; min-height: 100vh; }
+.sidebar { width: 220px; flex-shrink: 0; background: var(--bg-surface); border-right: 1px solid var(--border); display: flex; flex-direction: column; padding: 24px 0; position: sticky; top: 0; height: 100vh; }
+.brand { display: flex; align-items: center; gap: 10px; padding: 0 20px 32px; border-bottom: 1px solid var(--border); margin-bottom: 16px; }
+.brandMark { width: 32px; height: 32px; background: var(--accent); color: var(--bg-base); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 16px; flex-shrink: 0; }
+.brandName { font-size: 18px; font-weight: 700; letter-spacing: -0.5px; color: var(--text-primary); }
+.nav { flex: 1; display: flex; flex-direction: column; gap: 2px; padding: 0 12px; }
+.navItem { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: var(--radius-sm); color: var(--text-secondary); font-size: 13px; font-weight: 500; transition: all 0.15s; letter-spacing: 0.2px; }
+.navItem:hover { background: var(--bg-hover); color: var(--text-primary); }
+.navActive { background: var(--accent-dim); color: var(--accent); border: 1px solid var(--accent-glow); }
+.navActive:hover { background: var(--accent-dim); color: var(--accent); }
+.navIcon { font-size: 16px; width: 20px; text-align: center; }
+.sidebarFooter { padding: 16px 12px 0; border-top: 1px solid var(--border); display: flex; align-items: center; gap: 8px; }
+.userInfo { flex: 1; display: flex; align-items: center; gap: 8px; min-width: 0; }
+.userAvatar { width: 28px; height: 28px; border-radius: 50%; background: var(--bg-elevated); border: 1px solid var(--border-bright); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: var(--accent); flex-shrink: 0; }
+.userEmail { font-size: 11px; color: var(--text-muted); font-family: var(--font-mono); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.signOut { background: none; border: none; color: var(--text-muted); font-size: 16px; padding: 4px; border-radius: var(--radius-sm); transition: color 0.15s; flex-shrink: 0; }
+.signOut:hover { color: var(--red); }
+.main { flex: 1; overflow-y: auto; padding: 32px; min-width: 0; }
