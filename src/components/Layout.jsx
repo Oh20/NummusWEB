@@ -4,9 +4,10 @@ import { useAuth } from '../contexts/AuthContext'
 import styles from './Layout.module.css'
 
 const NAV = [
-  { to: '/dashboard', label: 'Dashboard', icon: '▦' },
-  { to: '/earnings',  label: 'Entradas',  icon: '↑' },
-  { to: '/expenses',  label: 'Saídas',    icon: '↓' },
+  { to: '/dashboard',       label: 'Dashboard',      icon: '▦' },
+  { to: '/earnings',        label: 'Entradas',        icon: '↑' },
+  { to: '/expenses',        label: 'Saídas',          icon: '↓' },
+  { to: '/payment-methods', label: 'Cartões & Bancos', icon: '◈' },
 ]
 
 export default function Layout() {

@@ -22,22 +22,41 @@ async function request(path, options = {}, token) {
 // ── Earnings ──────────────────────────────────────────────────────────────────
 
 export const earningsApi = {
-  list:   (token, month)        => request(`/earnings${month ? `?month=${month}` : ''}`, {}, token),
-  get:    (token, id)           => request(`/earnings/${id}`, {}, token),
-  create: (token, body)         => request('/earnings', { method: 'POST', body: JSON.stringify(body) }, token),
-  update: (token, id, body)     => request(`/earnings/${id}`, { method: 'PUT', body: JSON.stringify(body) }, token),
-  remove: (token, id)           => request(`/earnings/${id}`, { method: 'DELETE' }, token),
+  list:   (token, month)    => request(`/earnings${month ? `?month=${month}` : ''}`, {}, token),
+  get:    (token, id)       => request(`/earnings/${id}`, {}, token),
+  create: (token, body)     => request('/earnings', { method: 'POST', body: JSON.stringify(body) }, token),
+  update: (token, id, body) => request(`/earnings/${id}`, { method: 'PUT', body: JSON.stringify(body) }, token),
+  remove: (token, id)       => request(`/earnings/${id}`, { method: 'DELETE' }, token),
 }
 
 // ── Expenses ──────────────────────────────────────────────────────────────────
 
 export const expensesApi = {
-  list:    (token, month, cat)  => request(`/expenses${buildQuery({ month, category: cat })}`, {}, token),
-  get:     (token, id)          => request(`/expenses/${id}`, {}, token),
-  create:  (token, body)        => request('/expenses', { method: 'POST', body: JSON.stringify(body) }, token),
-  update:  (token, id, body)    => request(`/expenses/${id}`, { method: 'PUT', body: JSON.stringify(body) }, token),
-  remove:  (token, id)          => request(`/expenses/${id}`, { method: 'DELETE' }, token),
-  summary: (token, month)       => request(`/expenses/summary?month=${month}`, {}, token),
+  list:     (token, month, cat) => request(`/expenses${buildQuery({ month, category: cat })}`, {}, token),
+  get:      (token, id)         => request(`/expenses/${id}`, {}, token),
+  create:   (token, body)       => request('/expenses', { method: 'POST', body: JSON.stringify(body) }, token),
+  update:   (token, id, body)   => request(`/expenses/${id}`, { method: 'PUT', body: JSON.stringify(body) }, token),
+  remove:   (token, id)         => request(`/expenses/${id}`, { method: 'DELETE' }, token),
+  summary:  (token, month)      => request(`/expenses/summary?month=${month}`, {}, token),
+  forecast: (token, months = 6) => request(`/expenses/forecast?months=${months}`, {}, token),
+}
+
+// ── Payment Methods ───────────────────────────────────────────────────────────
+
+export const paymentMethodsApi = {
+  list:    (token)          => request('/payment-methods', {}, token),
+  create:  (token, body)    => request('/payment-methods', { method: 'POST', body: JSON.stringify(body) }, token),
+  update:  (token, id, body)=> request(`/payment-methods/${id}`, { method: 'PUT', body: JSON.stringify(body) }, token),
+  remove:  (token, id)      => request(`/payment-methods/${id}`, { method: 'DELETE' }, token),
+  summary: (token, month)   => request(`/payment-methods/summary?month=${month}`, {}, token),
+}
+
+// ── Categories ────────────────────────────────────────────────────────────────
+
+export const categoriesApi = {
+  list:   (token)       => request('/categories', {}, token),
+  create: (token, body) => request('/categories', { method: 'POST', body: JSON.stringify(body) }, token),
+  remove: (token, id)   => request(`/categories/${id}`, { method: 'DELETE' }, token),
 }
 
 function buildQuery(params) {

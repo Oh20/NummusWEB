@@ -12,7 +12,7 @@
 .title { font-size: 26px; font-weight: 800; letter-spacing: -0.5px; }
 .sub { font-size: 12px; color: var(--text-muted); font-family: var(--font-mono); margin-top: 2px; }
 
-.headerActions { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.headerActions { display: flex; gap: 8px; align-items: center; }
 
 .monthInput {
   background: var(--bg-elevated);
@@ -54,22 +54,6 @@
 }
 .btnSecondary:hover { background: var(--bg-hover); }
 
-/* Botão inline no label */
-.btnInline {
-  background: none;
-  border: none;
-  color: var(--accent);
-  font-size: 10px;
-  font-family: var(--font-mono);
-  cursor: pointer;
-  margin-left: 8px;
-  padding: 0;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  transition: opacity 0.15s;
-}
-.btnInline:hover { opacity: 0.7; }
-
 .totalBar {
   display: flex;
   align-items: center;
@@ -78,7 +62,7 @@
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   padding: 16px 20px;
-  margin-bottom: 16px;
+  margin-bottom: 24px;
 }
 
 .totalLabel {
@@ -95,71 +79,64 @@
   font-weight: 700;
   font-family: var(--font-mono);
   letter-spacing: -0.5px;
+  color: var(--red);
 }
 
-.list { display: flex; flex-direction: column; gap: 8px; }
+.section { margin-bottom: 28px; }
 
-.item {
+.sectionTitle {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-family: var(--font-mono);
+  margin-bottom: 12px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.card {
   background: var(--bg-surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  padding: 16px 20px;
+  padding: 20px;
+  transition: border-color 0.15s;
+}
+.card:hover { border-color: var(--border-bright); }
+
+.cardTop {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  transition: border-color 0.15s;
-}
-.item:hover { border-color: var(--border-bright); }
-
-.itemLeft { flex: 1; min-width: 0; }
-
-.itemTitle {
-  font-size: 14px;
-  font-weight: 600;
-  margin-bottom: 6px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  margin-bottom: 16px;
 }
 
-.itemMeta { display: flex; gap: 6px; flex-wrap: wrap; }
-
-.badge {
-  font-size: 10px;
-  font-family: var(--font-mono);
-  color: var(--text-muted);
-  background: var(--bg-elevated);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  padding: 2px 6px;
-}
-
-.badgeAccent {
-  color: var(--accent);
-  border-color: var(--accent-glow);
-  background: var(--accent-dim);
-}
-
-.itemRight { display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
-
-.itemValue {
-  font-size: 16px;
+.cardName {
+  font-size: 15px;
   font-weight: 700;
-  font-family: var(--font-mono);
-  letter-spacing: -0.5px;
+  letter-spacing: -0.3px;
 }
 
-.itemActions { display: flex; gap: 4px; opacity: 0; transition: opacity 0.15s; }
-.item:hover .itemActions { opacity: 1; }
+.cardActions {
+  display: flex;
+  gap: 4px;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+.card:hover .cardActions { opacity: 1; }
 
 .btnEdit, .btnDelete {
-  width: 28px;
-  height: 28px;
+  width: 26px;
+  height: 26px;
   border-radius: var(--radius-sm);
   border: 1px solid var(--border);
   background: var(--bg-elevated);
-  font-size: 13px;
+  font-size: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -168,6 +145,51 @@
 }
 .btnEdit:hover   { color: var(--accent); border-color: var(--accent-glow); }
 .btnDelete:hover { color: var(--red);    border-color: rgba(240,79,90,0.3); }
+
+.pendingLabel {
+  display: block;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: var(--font-mono);
+  margin-bottom: 4px;
+}
+
+.pendingValue {
+  display: block;
+  font-size: 22px;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  letter-spacing: -0.5px;
+  color: var(--red);
+}
+
+.progressBar {
+  margin-top: 12px;
+  height: 3px;
+  background: var(--bg-elevated);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: var(--red);
+  border-radius: 2px;
+  opacity: 0.4;
+}
+
+.loading, .empty {
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 60px 0;
+  text-align: center;
+}
 
 /* Modal */
 .overlay {
@@ -188,12 +210,8 @@
   border-radius: var(--radius-lg);
   padding: 32px;
   width: 100%;
-  max-width: 480px;
-  max-height: 90vh;
-  overflow-y: auto;
+  max-width: 360px;
 }
-
-.modalSmall { max-width: 340px; }
 
 .modalTitle {
   font-size: 18px;
@@ -202,9 +220,7 @@
   letter-spacing: -0.3px;
 }
 
-.form { display: flex; flex-direction: column; gap: 14px; }
-
-.row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.form { display: flex; flex-direction: column; gap: 16px; }
 
 .field { display: flex; flex-direction: column; gap: 6px; }
 
@@ -215,8 +231,6 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   font-family: var(--font-mono);
-  display: flex;
-  align-items: center;
 }
 
 .input {
@@ -233,20 +247,29 @@
 .input:focus { border-color: var(--accent); }
 .input::placeholder { color: var(--text-muted); }
 
-.installmentRow {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-.installmentSep { color: var(--text-muted); font-family: var(--font-mono); }
-
-.checkLabel {
-  display: flex;
-  align-items: center;
+.typeToggle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 8px;
-  font-size: 13px;
+}
+
+.typeBtn {
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg-elevated);
   color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 600;
   cursor: pointer;
+  transition: all 0.15s;
+  font-family: var(--font-display);
+}
+.typeBtn:hover { border-color: var(--border-bright); }
+.typeBtnActive {
+  border-color: var(--accent-glow);
+  background: var(--accent-dim);
+  color: var(--accent);
 }
 
 .modalActions {
@@ -254,14 +277,4 @@
   gap: 8px;
   justify-content: flex-end;
   margin-top: 8px;
-}
-
-.loading, .empty {
-  color: var(--text-muted);
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  padding: 60px 0;
-  text-align: center;
 }

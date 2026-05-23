@@ -7,6 +7,7 @@ import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
 import Earnings from './pages/Earnings'
 import Expenses from './pages/Expenses'
+import PaymentMethods from './pages/PaymentMethods'
 
 export default function App() {
   return (
@@ -15,10 +16,11 @@ export default function App() {
         <Route path="/login" element={<Login />} />
         <Route element={<PrivateRoute />}>
           <Route element={<Layout />}>
-            <Route path="/"          element={<Navigate to="/dashboard" replace />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/earnings"  element={<Earnings />} />
-            <Route path="/expenses"  element={<Expenses />} />
+            <Route path="/"                element={<Navigate to="/dashboard" replace />} />
+            <Route path="/dashboard"       element={<Dashboard />} />
+            <Route path="/earnings"        element={<Earnings />} />
+            <Route path="/expenses"        element={<Expenses />} />
+            <Route path="/payment-methods" element={<PaymentMethods />} />
           </Route>
         </Route>
       </Routes>
